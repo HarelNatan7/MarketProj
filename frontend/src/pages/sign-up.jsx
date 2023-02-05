@@ -41,6 +41,7 @@ export function SignUp() {
     async function onSignup(e) {
         e.preventDefault()
         try {
+            if (preventDoublueSubmission()) return showErrorMsg('E-Mail Alredy Registred!')
             const newUser = await marketerService.save(userToAdd)
             console.log('newUser:', newUser)
             setUserToAdd(marketerService.getEmptyMarketer())
@@ -51,6 +52,9 @@ export function SignUp() {
         }
     }
 
+    function preventDoublueSubmission() {
+       return users.some(user => user.email === userToAdd.email)
+    }
     return (
         <section className='signup'>
             <div className="email-password-container">
@@ -64,13 +68,13 @@ export function SignUp() {
                     <div className="input-container">
                         <span>Name</span>
                         <input type="text" name="name" id="name" placeholder="Enter your name"
-                        value={userToAdd.name}
+                            value={userToAdd.name}
                             onChange={handleChange} />
                     </div>
                     <div className="input-container">
                         <span>Last Name</span>
                         <input type="text" name="lastName" id="lastName" placeholder="Enter your last name"
-                        value={userToAdd.lastName}
+                            value={userToAdd.lastName}
                             onChange={handleChange} />
                     </div>
                     <div className="input-container">
@@ -90,14 +94,14 @@ export function SignUp() {
                     <div className="input-container">
                         <span>Website Address</span>
                         <input type="text" name="website" id="website" placeholder="Website Address"
-                        value={userToAdd.website}
+                            value={userToAdd.website}
                             onChange={handleChange} />
                     </div>
                     <div className="input-container">
                         <span>LinkedIn Address
                         </span>
                         <input type="text" name="linkdin" id="linkdin" placeholder="Linkdin profile"
-                        value={userToAdd.linkdin}
+                            value={userToAdd.linkdin}
                             onChange={handleChange} />
                     </div>
                     <div className="radio-input-container">
@@ -108,24 +112,24 @@ export function SignUp() {
                             <div className="radio-container">
 
                                 <input type="radio" id="no-experience" name="exp" value="no-experience"
-                                onChange={handleChange} />
+                                    onChange={handleChange} />
                                 <span htmlFor="no-experience">No Experience</span>
                             </div>
 
                             <div className="radio-container">
                                 <input type="radio" id="0-1-years" name="exp" value="0-1-years"
-                                onChange={handleChange} />
+                                    onChange={handleChange} />
                                 <span htmlFor="0-1-years">0-1 Years</span>
                             </div >
 
                             <div className="radio-container">
                                 <input type="radio" id="1-2-years" name="exp" value="1-2-years"
-                                onChange={handleChange} />
+                                    onChange={handleChange} />
                                 <span htmlFor="1-2-years">1-2 Years</span>
                             </div>
                             <div className="radio-container">
                                 <input type="radio" id="2-or-more" name="exp" value="2-or-more"
-                                onChange={handleChange} />
+                                    onChange={handleChange} />
                                 <span htmlFor="2-or-more">2 Or More Years</span>
                             </div>
                         </div>
