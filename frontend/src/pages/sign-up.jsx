@@ -40,81 +40,37 @@ export function SignUp() {
 
     return (
         <section className='signup'>
-            <Link to='/' className="top-header">
-            </Link>
-            <div className="router-wrapper">
-                <div className="email-password-container">
-                    <h1 className="signup-header">
-                        <b>Sign</b>
-                        {" Up"}
-                    </h1>
-                    <div className="email-page-two">
-                        <form className="email-password-input-and-button-container"
-                            onSubmit={onSignup}>
-                            <div className="form-input-container">
-                                <span className="email-password-label">Email</span>
-                                <div className="email-input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        id="email"
-                                        placeholder="Example@company.com"
-                                        type="email"
-                                        name="email"
-                                        className="email-input"
-                                        aria-label="Enter your work email address" required />
-                                </div>
-                            </div>
-                            <div className="form-input-container">
-                                <span className="email-password-label">Name</span>
-                                <div className="password-input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        id="fullname"
-                                        type="text"
-                                        name="fullname"
-                                        className="name-input"
-                                        placeholder="Full name" required />
-                                </div>
-                            </div>
-                            <div className="form-input-container">
-                                <span className="email-password-label">Password</span>
-                                <div className="password-input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        id="password"
-                                        type="password"
-                                        name="password"
-                                        className="password-input"
-                                        placeholder="Password" required />
-                                </div>
-                            </div>
-                            <div className="next-btn-wrapper">
-                                <div className="next-btn-container">
-
-                                    <button type="submit" className="next-btn">
-                                        <div className="next-wrapper">Sign up</div>
-                                        <div className="right-arrow-icon">
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="login-seperator-container">
-                        <div className="login-seperator">
-                            <span className="seperator-line"></span>
-                            <h2 className="or-sign-in-txt" >Or</h2>
-                            <span className="seperator-line"></span>
+            <div className="email-password-container">
+                <h1 className="signup-header">
+                    <b>Sign</b>
+                    {" Up"}
+                </h1>
+                <form className="email-password-input-and-button-container"
+                    onSubmit={onSignup}>
+                    <div className="form-input-container">
+                        <span className="email-password-label">Email</span>
+                        <div className="email-input-container">
+                            <input
+                                onChange={handleChange}
+                                id="email"
+                                placeholder="Example@company.com"
+                                type="email"
+                                name="email"
+                                className="email-input"
+                                aria-label="Enter your work email address" required />
                         </div>
                     </div>
 
-                    <Link to='/login' className="login-to-other-acc">
-                        <span>Already have an account?   </span>
-                        <button className="other-acc-btn" >
-                            Log in</button>
-                    </Link >
-                </div>
+                    <div className="btn-container">
+                        <button type="submit" className="next-btn">
+                            <div className="next-wrapper">Sign up</div>
+                        </button>
+                    </div>
+
+                </form>
+
             </div>
+
         </section>
     )
 }
