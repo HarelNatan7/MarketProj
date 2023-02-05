@@ -2,69 +2,48 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { httpService } from './http.service.js'
 
-const STORAGE_KEY = 'car'
+const STORAGE_KEY = 'user'
+const BASE_URL = 'user/'
 
-export const carService = {
+export const marketerService = {
     query,
     getById,
     save,
     remove,
-    getEmptyMarketeer,
-    addCarMsg
+    getEmptyMarketer
 }
-window.cs = carService
+window.cs = userService
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    var cars = await storageService.query(STORAGE_KEY)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    }
-    if (filterBy.price) {
-        cars = cars.filter(car => car.price <= filterBy.price)
-    }
-    return cars
+async function query() {
+    // const users = await storageService.query(STORAGE_KEY)
+    const users = await httpService.get(BASE_URL)
+    console.log('usersFromStorage:', users)
+    return users
 }
 
-function getById(carId) {
-    return storageService.get(STORAGE_KEY, carId)
+function getById(userId) {
+    return storageService.get(STORAGE_KEY, userId)
 }
 
-async function remove(carId) {
-    // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, carId)
+async function remove(userId) {
+    await storageService.remove(STORAGE_KEY, userId)
 }
 
-async function save(car) {
-    var savedCar
-    if (car._id) {
-        savedCar = await storageService.put(STORAGE_KEY, car)
+async function save(user) {
+    var savedUser
+    if (user._id) {
+        savedUser = await storageService.put(STORAGE_KEY, user)
     } else {
-        // Later, owner is set by the backend
-        car.owner = userService.getLoggedinUser()
-        savedCar = await storageService.post(STORAGE_KEY, car)
+        // savedUser = await storageService.post(STORAGE_KEY, user)
+        savedUser = await httpService.post('user', user)
+
     }
-    return savedCar
+    return savedUser
 }
 
-async function addCarMsg(carId, txt) {
-    // Later, this is all done by the backend
-    const car = await getById(carId)
-    if (!car.msgs) car.msgs = []
-
-    const msg = {
-        id: utilService.makeId(),
-        by: userService.getLoggedinUser(),
-        txt
-    }
-    car.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, car)
-
-    return msg
-}
-
-function getEmptyMarketeer() {
+function getEmptyMarketer() {
     return {
         name: '',
         lastName: '',
@@ -72,9 +51,6 @@ function getEmptyMarketeer() {
         website: '',
         linkdin: '',
         exp: '',
-        budget: '',
+        budget: 0,
     }
 }
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
