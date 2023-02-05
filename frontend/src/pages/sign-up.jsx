@@ -43,6 +43,7 @@ export function SignUp() {
         try {
             const newUser = await marketerService.save(userToAdd)
             console.log('newUser:', newUser)
+            setUserToAdd(marketerService.getEmptyMarketer())
             showSuccessMsg(`Registered successfully userId: ${newUser._id}`)
         } catch (err) {
             showErrorMsg('Cannot Register')
@@ -63,11 +64,13 @@ export function SignUp() {
                     <div className="input-container">
                         <span>Name</span>
                         <input type="text" name="name" id="name" placeholder="Enter your name"
+                        value={userToAdd.name}
                             onChange={handleChange} />
                     </div>
                     <div className="input-container">
                         <span>Last Name</span>
                         <input type="text" name="lastName" id="lastName" placeholder="Enter your last name"
+                        value={userToAdd.lastName}
                             onChange={handleChange} />
                     </div>
                     <div className="input-container">
@@ -79,6 +82,7 @@ export function SignUp() {
                                 placeholder="Example@company.com"
                                 type="email"
                                 name="email"
+                                value={userToAdd.email}
                                 className="email-input"
                                 aria-label="Enter your work email address" required />
                         </div>
@@ -86,12 +90,14 @@ export function SignUp() {
                     <div className="input-container">
                         <span>Website Address</span>
                         <input type="text" name="website" id="website" placeholder="Website Address"
+                        value={userToAdd.website}
                             onChange={handleChange} />
                     </div>
                     <div className="input-container">
                         <span>LinkedIn Address
                         </span>
                         <input type="text" name="linkdin" id="linkdin" placeholder="Linkdin profile"
+                        value={userToAdd.linkdin}
                             onChange={handleChange} />
                     </div>
                     <div className="radio-input-container">
@@ -131,7 +137,7 @@ export function SignUp() {
                         <input
                             id="range"
                             type="range"
-                            name="range"
+                            name="budget"
                             title={userToAdd.budget}
                             onChange={handleChange}
                             min="1000" max="500000"

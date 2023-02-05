@@ -23,14 +23,6 @@ async function query() {
     return users
 }
 
-function getById(userId) {
-    return storageService.get(STORAGE_KEY, userId)
-}
-
-async function remove(userId) {
-    await storageService.remove(STORAGE_KEY, userId)
-}
-
 async function save(user) {
     var savedUser
     if (user._id) {
