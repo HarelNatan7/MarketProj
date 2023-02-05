@@ -9,15 +9,17 @@
 
 .email-password-container {
     padding: 50px;
-    text-align: center;
-
+    text-align: left;
+    h1 {
+        text-align: center;
+    }
 }
 
 .input-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 55px;
     margin: 0;
     font-size: 14px;
     min-width: 400px;
