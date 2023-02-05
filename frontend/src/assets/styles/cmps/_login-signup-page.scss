@@ -1,6 +1,6 @@
 .signup-header {
     padding-bottom: 20px;
-    margin-left: 85px;
+    margin-left: 55px;
 
     b {
         color: rgb(1, 132, 219);
@@ -17,10 +17,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     min-width: 400px;
+
+    ::placeholder {
+        padding-left: 10px;
+    }
 
     span {
         width: 100px;
@@ -59,10 +63,11 @@ legend {
 
 .radio-wrapper {
     display: flex;
-    flex-direction: column;
+    width: max-content;
     gap: 5px;
     font-size: 14px;
-    margin-left: 38px;
+    align-self: center;
+    // margin-left: 38px;
     text-align: center;
 }
 
@@ -73,6 +78,7 @@ legend {
 
     span {
         padding-left: 25px;
+        flex-grow: 1;
     }
 }
 
@@ -89,11 +95,11 @@ legend {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-left: 88px;
+    margin-left: 70px;
 }
 
 .btn-container {
-    margin-left: 86px;
+    margin-left: 70px;
 
     button {
         width: 200px;
