@@ -9,9 +9,7 @@ const BASE_URL = 'user/'
 
 export const marketerService = {
     query,
-    getById,
     save,
-    remove,
     getEmptyMarketer
 }
 window.cs = userService
