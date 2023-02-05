@@ -11,22 +11,15 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // Views
 @import "views/about-us";
 @import "views/home-page";
 @import "views/car-app";
 @import "views/review-app";
 @import "views/user-details";
-
 // Components
 @import "cmps/app-header";
 @import "cmps/app-footer";
 @import "cmps/user-msg";
 @import "cmps/shopping-cart";
-
-
-
-
-
-
+@import "cmps/_login-signup-page";
