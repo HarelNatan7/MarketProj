@@ -10,11 +10,10 @@ export const carService = {
     getById,
     save,
     remove,
-    getEmptyCar,
+    getEmptyMarketeer,
     addCarMsg
 }
 window.cs = carService
-
 
 async function query(filterBy = { txt: '', price: 0 }) {
     var cars = await storageService.query(STORAGE_KEY)
@@ -65,17 +64,17 @@ async function addCarMsg(carId, txt) {
     return msg
 }
 
-function getEmptyCar() {
+function getEmptyMarketeer() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        name: '',
+        lastName: '',
+        email: '',
+        website: '',
+        linkdin: '',
+        exp: '',
+        budget: '',
     }
 }
 
-
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-
-
-
-
