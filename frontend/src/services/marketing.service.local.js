@@ -71,7 +71,7 @@ function getEmptyMarketeer() {
         email: '',
         website: '',
         linkdin: '',
-        experience: '',
+        exp: '',
         budget: '',
     }
 }
