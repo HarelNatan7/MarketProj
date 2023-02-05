@@ -76,7 +76,6 @@ export function SignUp() {
                         <label className="quest-label-label">What was the
                             biggest campaign budget you have managed in a single month?</label>
                         <input
-                            onChange={handleChange}
                             id="range"
                             type="range"
                             name="range"
